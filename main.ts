@@ -1,3 +1,15 @@
+/**
+ * @module
+ * This module provide to you a cool function to transform some digit to text :)
+ *
+ * @example
+ * ```ts
+ * import {digit2text} from "@lby/digit2text";
+ *
+ * console.log(digit2text(2)) // output "two"
+ * ```
+ */
+
 const solo:string[] = [
     "one",
     "two",
@@ -36,10 +48,10 @@ const tens:string[] = [
     "hundred"
 ]
 
-export default function digit2word(digit: number): string {
+export function digit2word(digit: number): string {
     const last: string = String(digit % 10); // keep the last digit (ex: 9 in 29)
     const first: string = String(keepNum(digit, 0)); // keep the first digit (ex: 2 in 29)
-    const sec: string = String(keepNum(digit, 1)); // keep the second digit
+    //const sec: string = String(keepNum(digit, 1)); // keep the second digit
 
     if (digit < 10){
         if (digit == 0) {
