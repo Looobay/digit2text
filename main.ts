@@ -48,6 +48,11 @@ const tens:string[] = [
     "hundred"
 ]
 
+/**
+ * This function just take a number and transform it in plain text (example: 1 -> "one").
+ *
+ * @param digit This is you're number.
+ */
 export function digit2word(digit: number): string {
     const last: string = String(digit % 10); // keep the last digit (ex: 9 in 29)
     const first: string = String(keepNum(digit, 0)); // keep the first digit (ex: 2 in 29)
@@ -127,6 +132,11 @@ export function digit2word(digit: number): string {
     return "sorry bro :("
 }
 
+/**
+ * Check which number is the last in the string and return it to a string.
+ *
+ * @param last just a string lol
+ */
 function LastCheck(last: string): string{
     let i = 0;
     while (i < 10) {
@@ -138,7 +148,12 @@ function LastCheck(last: string): string{
     return last; // if we fail
 }
 
-// I think I will upload this as a package lol
+/**
+ * This function is very basic but useful because you can take only one character of you're choice from a string.
+ *
+ * @param candidate It is the number you want to transform
+ * @param num Indicate the position inside the string of the number of the character you want to take.
+ */
 function keepNum(candidate: number, num: number): number {
     return Number(candidate.toString()[num]);
 }
