@@ -83,13 +83,27 @@ export default function digit2word(digit: number): string {
         let k = 0;
         while (i < 10){
             if (first.includes(String(i))){
-                while (k < 10){
+                while (k < 10){ // Bugged here
                     if (sec.includes("0") && last.includes("0")){
                         return solo[i - 1] + " " + tens[8];
+                    } else if (sec.includes("0") && last.includes(String(k))){
+                        if (k != 0) {
+                            return solo[i - 1] + " " + tens[8] + " and " + solo[k - 1];
+                        } else {
+                            return solo[i - 1] + " " + tens[8] + " and " + solo[k];
+                        }
                     } else if (sec.includes(String(k)) && last.includes("0")){
-                        return solo[i - 1] + " " + tens[8] + " and " + tens[k - 2];
-                    } else if (sec.includes(String(k))) {
-                        return solo[i - 1] + " " + tens[8] + " and " + tens[k - 2] + " " + LastCheck(String(Number(last) - 1));
+                        if (k < 2) {
+                            return solo[i - 1] + " " + tens[8] + " and " + tens[k];
+                        } else {
+                            return solo[i - 1] + " " + tens[8] + " and " + tens[k - 2];
+                        }
+                    } else if (sec.includes(String(k)) && last.includes(String(k)))  {
+                        if (k < 2) {
+                            return solo[i - 1] + " " + tens[8] + " and " + tens[k] + " " + LastCheck(String(Number(last) - 1));
+                        } else {
+                            return solo[i - 1] + " " + tens[8] + " and " + tens[k - 2] + " " + LastCheck(String(Number(last) - 1));
+                        }
                     }
                     k += 1;
                 }
@@ -111,33 +125,6 @@ function LastCheck(last: string): string{
         i += 1;
     }
     return last; // if we fail
-}
-
-function returnDozen(yo: string): string{
-    switch(true){
-        case yo.includes("0"):
-            return dozen[0]
-        case yo.includes("1"):
-            return dozen[1]
-        case yo.includes("2"):
-            return dozen[2]
-        case yo.includes("3"):
-            return dozen[3]
-        case yo.includes("4"):
-            return dozen[4]
-        case yo.includes("5"):
-            return dozen[5]
-        case yo.includes("6"):
-            return dozen[6]
-        case yo.includes("7"):
-            return dozen[7]
-        case yo.includes("8"):
-            return dozen[8]
-        case yo.includes("9"):
-            return dozen[9]
-    }
-
-    return yo;
 }
 
 // I think I will upload this as a package lol
