@@ -78,33 +78,31 @@ export default function digit2word(digit: number): string {
         }
     }
 
+    if (digit >= 100){
+        console.warn("WARNING - Digit2Text: This library is limited to 100 sry :(")
+    }
+
+    /*
+    This section is closed because it is too buggy...
     if (digit >= 100 && digit < 1000) {
         let i = 1;
         let k = 0;
         while (i < 10){
             if (first.includes(String(i))){
-                while (k < 10){ // Bugged here
-                    if (sec.includes("0") && last.includes("0")){
-                        return solo[i - 1] + " " + tens[8];
-                    } else if (sec.includes("0") && last.includes(String(k))){
-                        if (k != 0) {
-                            return solo[i - 1] + " " + tens[8] + " and " + solo[k - 1];
-                        } else {
-                            return solo[i - 1] + " " + tens[8] + " and " + solo[k];
-                        }
-                    } else if (sec.includes(String(k)) && last.includes("0")){
-                        if (k < 2) {
-                            return solo[i - 1] + " " + tens[8] + " and " + tens[k];
-                        } else {
-                            return solo[i - 1] + " " + tens[8] + " and " + tens[k - 2];
-                        }
-                    } else if (sec.includes(String(k)) && last.includes(String(k)))  {
-                        if (k < 2) {
-                            return solo[i - 1] + " " + tens[8] + " and " + tens[k] + " " + LastCheck(String(Number(last) - 1));
-                        } else {
-                            return solo[i - 1] + " " + tens[8] + " and " + tens[k - 2] + " " + LastCheck(String(Number(last) - 1));
-                        }
+                while (k < 10){
+                    if ((Number(sec) + Number(last)) == 10) { // I just surrendered right here
+                        return solo[i - 1] + " " + tens[8] + " and " + "10";
                     }
+                    if (sec.includes(String(k)) && digit >= 110 && digit < 120 && Number(last) != 0) { // Ex: 111
+                        return solo[i - 1] + " " + tens[8] + " and " + dozen[k];
+                    }
+                    else if (sec.includes(String(k)) && last.includes("0")) { // Ex: 110, 120
+                        return solo[i - 1] + " " + tens[8] + " and " + tens[k - 2];
+                    }
+                    else if (sec.includes(String(k)) && digit < 110) {
+                        return solo[i - 1] + " " + tens[8] + " and " + LastCheck(String(Number(last) - 1));
+                    }
+
                     k += 1;
                 }
                 return solo[i - 1] + " " + tens[8];
@@ -112,6 +110,7 @@ export default function digit2word(digit: number): string {
             i += 1;
         }
     }
+     */
 
     return "sorry bro :("
 }
