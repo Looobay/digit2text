@@ -1,12 +1,12 @@
-# Just a cool module to transform some digits to plain text :)
-[JSR link](https://jsr.io/@lby/digit2word) [Github link](https://github.com/Looobay/digit2text)
+# Just a cool module that transform you're digit to text 😃
+[JSR link](https://jsr.io/@lby/digit2word) 
 
-For now the module is a little buggy and it cannot transform digits that are bigger than 100 (sorry 😓)...
+[Github link](https://github.com/Looobay/digit2text)
 
 ```ts
 import {digit2text} from "@lby/digit2text";
 
-console.log(digit2text(2)) // output "two"
-```
+console.log(digit2text(2)); // output "two"
 
-The module work on deno and Node js
+console.log(digit2text(110)); // output "one hundred and ten"
+```

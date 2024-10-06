@@ -1,4 +1,4 @@
-import digit2word from "./main.ts";
+import {digit2word} from "./main.ts";
 
 let i: number = 0;
 while (i != 1000 + 1){
